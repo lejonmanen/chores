@@ -1,28 +1,53 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import AddChore from './AddChore.js';
+import ChoreList from './ChoreList.js';
+import withLocalStorage from './withLocalStorage';
+
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+	constructor(props) {
+		super(props);
+		let data = props.loadFromStorage('chores');
+		if( !data ) {
+			localStorage.setItem('chores', JSON.stringify([]));
+		}
+		let fromJson = [];
+		if( data ) {
+			try {
+				fromJson = JSON.parse(data);
+			} catch (e) {
+				fromJson = [];
+			}
+		}
+		this.state = {
+			chores: fromJson
+		}
+	}
+	render() {
+		return (
+			<div className="App">
+				<AddChore addChore={this.addNewChore} />
+				<ChoreList chores={this.state.chores} remove={this.removeChore} />
+			</div>
+		);
+	}
+	addNewChore = (title, lastDone) => {
+		if( !this.state.chores.find(c => c.title === title && c.lastDone === lastDone) ) {
+			const newList = [...this.state.chores, { title, lastDone } ];
+			this.saveList(newList);
+		}
+	}
+	removeChore = (title, lastDone) => {
+		const newList = this.state.chores.filter(c => c.title !== title || c.lastDone !== lastDone);
+		this.saveList(newList);
+	}
+	saveList = list => {
+		this.setState({ chores: list });
+		this.props.saveToStorage('chores', JSON.stringify(list));
+	}
 }
 
-export default App;
+
+
+export default withLocalStorage(App);
