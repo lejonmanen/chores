@@ -28,12 +28,26 @@ class App extends Component {
 		return (
 			<div className="App">
 				<AddChore addChore={this.addNewChore} />
-				<ChoreList chores={this.state.chores} remove={this.removeChore} />
+				<ChoreList chores={this.state.chores}
+					remove={this.removeChore}
+					didIt={this.didIt} />
 			</div>
 		);
 	}
+	didIt = chore => {
+		this.saveList(this.state.chores.map(
+			c => {
+				if( this.sameChore(c, chore) ) {
+					return { ...c, lastDone: new Date().toISOString() };
+				}
+				return c;
+			})
+	 	);
+	}
+	sameChore = (c1, c2) => c1.title === c2.title && c1.lastDone === c2.lastDone
+
 	addNewChore = (title, lastDone) => {
-		if( !this.state.chores.find(c => c.title === title && c.lastDone === lastDone) ) {
+		if( !this.state.chores.find(c => this.sameChore(c, { title, lastDone })) ) {
 			const newList = [...this.state.chores, { title, lastDone } ];
 			this.saveList(newList);
 		}
