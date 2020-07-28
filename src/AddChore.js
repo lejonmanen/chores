@@ -4,7 +4,8 @@ import withLocalStorage from './withLocalStorage.js';
 class AddChore extends React.Component {
 	state = {
 		title: '',
-		lastDone: ''
+		lastDone: '',
+		disableRemove: false
 	}
 	render() {
 		// const textChange = key => e => { let o = {}; o[key] = e.target.value; this.setState(o); };

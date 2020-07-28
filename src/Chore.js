@@ -9,7 +9,7 @@ const Chore = ({ c, remove, didIt }) => (
 			<div>{displayTime(c.lastDone)}</div>
 		</div>
 		<button onClick={() => didIt(c)}>Did it!</button>
-		<button onClick={e => remove(c.title, c.lastDone)}>Remove</button>
+		<button onClick={e => remove(c.title, c.lastDone)} className="ghost">Remove</button>
 	</div>
 )
 

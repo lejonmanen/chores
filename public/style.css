@@ -1,3 +1,8 @@
+:root {
+	--blue1: #819FF7;
+	--blue2: #A9D0F5;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -10,29 +15,23 @@ input[type="text"], button {
 input[type="text"] {
 	padding: 0.8em 0.8em;
 }
+input:hover {border-color: lightgray;}
+
 button {
-	padding: 0.8em 1.8em;
-	border-radius: 1.4em;
-	/* border: 1px solid black; */
-	/* border: none; */
-	border-color: #F6E3CE;
-	background-color: #FBF8EF;
-    box-shadow: inset 0 0 0 0.125rem #F5ECCE;
-	/* color: #2E2E2E; */
-	/* color: red; */
-	/* color: #F6E3CE; */
-	color: #FAAC58;
-	transition: color 0.5s, background-color 0.5s, border-color 0.5s;
-	/* transition: width 2s, height 2s, background-color 2s, transform 2s; */
 	user-select: none;
+	padding: 0.8em 0.8em;
+	background-color: var(--blue2);
+	/*border: 1px solid var(--blue1);*/
+	border: 1px solid var(--blue2);
+	transition: all 0.4s
 }
 button:hover {
-	color: #FAAC58;
+	background-color: var(--blue1);
 	cursor: pointer;
-	background-color: #fff;
-	border-color: #FAAC58;
 }
-
+.ghost {
+	background-color: white;
+}
 
 /* Form for adding new items */
 .add-chore {
