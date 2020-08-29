@@ -42,6 +42,41 @@ button:hover {
 	margin: 0em;
 	padding: 1.6em;
 }
+/* .add-chore input { width: 8em; border-color: red; } */
+.add-chore .grid {
+	display: flex;
+	flex-wrap: wrap;
+	/* grid-template-columns: repeat(auto-fill, minmax(10em, auto)); */
+	/* grid-gap: 1em; */
+}
+.add-chore .grid > .row { display: flex; padding: 0px; }
+.add-chore .grid input {
+	width: 14em;
+}
+.add-chore .grid > .row > input {
+	width: 8em;
+	margin-right: 0px;
+}
+.add-chore .grid > .row > button {
+	width: 4em;
+	margin-left: 0px;
+}
+.add-chore .grid input[type="number"] {
+	width: 3em;
+	padding-left: 1em;
+	margin: 0.3em;
+}
+.add-chore .grid > * {
+	/* width: 14em; */
+	display: block;
+	/* border: 2px dashed purple; */
+	/* border-radius: 1em; */
+	/* min-width: 10em; */
+	/* width: 100%; */
+	/* padding: 0.2em; */
+	/* margin: 0.2em; */
+}
+
 
 /* List of everything */
 .chore-list {
@@ -66,8 +101,16 @@ button:hover {
 	padding: 0.8em;
 	box-shadow: 8px 8px 0px 0px rgba(173,173,173,0.5);
 	vertical-align: top;
+	transition: all 0.4s;
 }
-.chore > div:first-child { display: flex; }
-.chore > div:first-child > div { display: inline-block; flex-grow: 1; }
-.chore > div:first-child > div:first-child { margin-right: 0.5em; }
-.chore > div:first-child > div:last-child { margin-left: 0.5em; text-align: right; }
+.chore:hover {
+	/* border-color: black; */
+	box-shadow: 0px 0px 4px 4px rgba(173,173,173,0.5);
+}
+.chore.overdue { background-color: #F7BFB5; }
+.chore.soon { background-color: #FAF6DD; }
+.chore > .borderText { display: flex; }
+.chore > .borderText > div { display: inline-block; flex-grow: 1; }
+.chore > .borderText > div:first-child { margin-right: 0.5em; }
+.chore > .borderText > div:last-child { margin-left: 0.5em; text-align: right; }
+.chore .discreet { color: #2D86A2; }

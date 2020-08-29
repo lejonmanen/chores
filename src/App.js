@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import './App.css';
 import AddChore from './AddChore.js';
 import ChoreList from './ChoreList.js';
 import withLocalStorage from './withLocalStorage';
 
+
+// TODO: "refresh" button
 
 class App extends Component {
 	constructor(props) {
@@ -21,18 +22,26 @@ class App extends Component {
 			}
 		}
 		this.state = {
-			chores: fromJson
+			chores: fromJson,
+			refreshCounter: 0
 		}
 	}
 	render() {
+		const position = {
+			position: 'absolute', right: '0px', top: '0px', margin: '0px'
+		}
 		return (
 			<div className="App">
+				<button onClick={this.refresh} style={position}>Refresh</button>
 				<AddChore addChore={this.addNewChore} />
 				<ChoreList chores={this.state.chores}
 					remove={this.removeChore}
 					didIt={this.didIt} />
 			</div>
 		);
+	}
+	refresh = () => {
+		this.setState({ refreshCounter: this.refreshCounter + 1 })
 	}
 	didIt = chore => {
 		this.saveList(this.state.chores.map(
@@ -46,9 +55,10 @@ class App extends Component {
 	}
 	sameChore = (c1, c2) => c1.title === c2.title && c1.lastDone === c2.lastDone
 
-	addNewChore = (title, lastDone) => {
+	addNewChore = (title, lastDone, dueDays, nextDue) => {
+		console.log('Add new', dueDays, nextDue);
 		if( !this.state.chores.find(c => this.sameChore(c, { title, lastDone })) ) {
-			const newList = [...this.state.chores, { title, lastDone } ];
+			const newList = [...this.state.chores, { title, lastDone, dueDays, nextDue } ];
 			this.saveList(newList);
 		}
 	}

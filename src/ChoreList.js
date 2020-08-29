@@ -9,7 +9,10 @@ const ChoreList = ({ chores, remove, didIt }) => (
 				c={c}
 				didIt={didIt}
 				remove={remove}
-				key={c.title + c.lastDone}/>)
+				key={c.title + c.lastDone}
+				dueDays={c.dueDays}
+				nextDue={c.nextDue}
+				/>)
 		)}
 	</div>
 );
