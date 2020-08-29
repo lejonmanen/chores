@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import AddChore from './AddChore.js';
-import ChoreList from './ChoreList.js';
+import AddChore from './components/AddChore.js';
+import ChoreList from './components/ChoreList.js';
 import withLocalStorage from './withLocalStorage';
 
 
