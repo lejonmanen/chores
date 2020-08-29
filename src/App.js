@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AddChore from './components/AddChore.js';
 import ChoreList from './components/ChoreList.js';
-import withLocalStorage from './withLocalStorage';
+import withLocalStorage from './utils/withLocalStorage';
 
 
 // TODO: "refresh" button

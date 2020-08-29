@@ -1,5 +1,5 @@
 import React from 'react';
-import withLocalStorage from './withLocalStorage.js';
+import withLocalStorage from '../utils/withLocalStorage.js';
 
 // TODO: improve "now" and "add task" buttons
 // TODO: set expected due date (optional)

@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatToNext, formatDueDays, dueClass, displayTime } from './datefunctions.js';
+import { formatToNext, formatDueDays, dueClass, displayTime } from '../utils/datefunctions.js';
 
 // TODO: add datepicker
 // TODO: add checkbox and trashbin icons instead of boring buttons
