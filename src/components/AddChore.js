@@ -9,11 +9,10 @@ class AddChore extends React.Component {
 		title: '',
 		lastDone: '',
 		disableRemove: false,
-		dueDays: 0,
+		dueDays: 3,
 		nextDue: null
 	}
 	render() {
-		// const textChange = key => e => { let o = {}; o[key] = e.target.value; this.setState(o); };
 		const changeTitle = e => this.setState({ title: e.target.value });
 		const changeDone  = e => this.setState({ lastDone: e.target.value });
 		const changeDue = e => {
@@ -31,21 +30,23 @@ class AddChore extends React.Component {
 				Add a new task
 				<div className="grid">
 				<input type="text" placeholder="Title"
+					title="Descriptive title for a new task"
 					onChange={changeTitle}
 					value={this.state.title} />
 
 				<div className="row">
 				<input type="text" placeholder="Last done"
+					title="When the action was last done"
 					onChange={changeDone}
 					value={this.state.lastDone}
 					onKeyDown={e => e.keyCode === 13 ? add(e) : ''}
 					/>
-				<button onClick={this.setNow}>Now</button>
+				<button className="ghost" title="Use the current time"
+					onClick={this.setNow}>Now</button>
 				</div>
 
 
 				<input type="number"
-					placeholder="Days"
 					title="Expected number of days between events"
 					onChange={changeDue}
 					value={this.state.dueDays}

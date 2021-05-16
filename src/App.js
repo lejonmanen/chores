@@ -28,7 +28,7 @@ class App extends Component {
 	}
 	render() {
 		const position = {
-			position: 'absolute', right: '0px', top: '0px', margin: '0px'
+			position: 'absolute', right: '0px', bottom: '0px', margin: '0px'
 		}
 		return (
 			<div className="App">
@@ -36,10 +36,12 @@ class App extends Component {
 				<AddChore addChore={this.addNewChore} />
 				<ChoreList chores={this.state.chores}
 					remove={this.removeChore}
-					didIt={this.didIt} />
+					didIt={this.didIt}
+					moveUp={this.moveUp} />
 			</div>
 		);
 	}
+
 	refresh = () => {
 		this.setState({ refreshCounter: this.refreshCounter + 1 })
 	}
@@ -52,6 +54,14 @@ class App extends Component {
 				return c;
 			})
 	 	);
+	}
+	moveUp = chore => {
+		console.log('Hello');
+		const newList = [...this.state.chores]
+		const fromIndex = newList.findIndex(c => this.sameChore(c, chore))
+		newList[fromIndex] = this.state.chores[fromIndex - 1]
+		newList[fromIndex - 1] = this.state.chores[fromIndex]
+		this.saveList(newList)
 	}
 	sameChore = (c1, c2) => c1.title === c2.title && c1.lastDone === c2.lastDone
 

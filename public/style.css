@@ -21,7 +21,6 @@ button {
 	user-select: none;
 	padding: 0.8em 0.8em;
 	background-color: var(--blue2);
-	/*border: 1px solid var(--blue1);*/
 	border: 1px solid var(--blue2);
 	transition: all 0.4s
 }
@@ -33,6 +32,15 @@ button:hover {
 	background-color: white;
 }
 
+
+/* App component */
+.App {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+
 /* Form for adding new items */
 .add-chore {
 	/* border-bottom: 1px solid #81BEF7; */
@@ -40,7 +48,7 @@ button:hover {
 	display: block;
 	/* width: 50%; */
 	margin: 0em;
-	padding: 1.6em;
+	padding: 0.6em 1.2em 0.8em 1.2em;
 }
 /* .add-chore input { width: 8em; border-color: red; } */
 .add-chore .grid {
@@ -83,11 +91,8 @@ button:hover {
 	background-color: #E0ECF8;
 	margin; 0;
 	padding: 1em 1em 2em 1em;
-	/* margin-right: 1em; */
-	/* display: inline-block; */
 	display: block;
-	/* display: grid;
-	grid-template-columns: 1fr 1fr 1fr; */
+	flex: 1 1 auto;
 }
 
 /* Singe chore */
@@ -97,7 +102,7 @@ button:hover {
 	border-radius: 2px;
 	display: inline-block;
 	width: 16em;
-	margin: 4px;
+	margin: 6px;
 	padding: 0.8em;
 	box-shadow: 8px 8px 0px 0px rgba(173,173,173,0.5);
 	vertical-align: top;
