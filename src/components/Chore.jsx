@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
 import { formatToNext, formatDueDays, dueClass, displayTime } from '../utils/datefunctions.js';
 
 // TODO: add datepicker
@@ -14,7 +14,7 @@ const Chore = ({ c, remove, didIt, moveUp }) => (
 			<div title="Last done">{displayTime(c.lastDone)}</div>
 		</div>
 		<button onClick={() => didIt(c)}>Did it!</button>
-		<button onClick={e => remove(c.title, c.lastDone)} className="ghost">Remove</button>
+		<button onClick={() => remove(c.title, c.lastDone)} className="ghost">Remove</button>
 		{moveUp ? <button className="ghost" onClick={() => moveUp(c)}>Move up</button> : null}
 
 	</div>

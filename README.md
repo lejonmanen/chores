@@ -1,13 +1,8 @@
-## Chores
-### React app for keeping track of tasks
-Use this to keep track of how long ago you last watered your plants etc.
+# React + Vite
 
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Currently, two official plugins are available:
 
-If you fork this project:
-
-+ `npm run start` to run it, on a local development server
-+ `npm deploy` to push (make sure to edit package.json with your own settings first)
-
-Pull requests welcome!
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

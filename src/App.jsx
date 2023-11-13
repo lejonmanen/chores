@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import AddChore from './components/AddChore.js';
-import ChoreList from './components/ChoreList.js';
+import { Component } from 'react';
+import AddChore from './components/AddChore.jsx';
+import ChoreList from './components/ChoreList.jsx';
 import withLocalStorage from './utils/withLocalStorage';
 
 
@@ -9,6 +9,7 @@ import withLocalStorage from './utils/withLocalStorage';
 class App extends Component {
 	constructor(props) {
 		super(props);
+		// eslint-disable-next-line react/prop-types
 		let data = props.loadFromStorage('chores');
 		if( !data ) {
 			localStorage.setItem('chores', JSON.stringify([]));
@@ -53,7 +54,7 @@ class App extends Component {
 				}
 				return c;
 			})
-	 	);
+		);
 	}
 	moveUp = chore => {
 		console.log('Hello');
@@ -78,10 +79,11 @@ class App extends Component {
 	}
 	saveList = list => {
 		this.setState({ chores: list });
+		// eslint-disable-next-line react/prop-types
 		this.props.saveToStorage('chores', JSON.stringify(list));
 	}
 }
 
 
-
-export default withLocalStorage(App);
+const wls = withLocalStorage(App)
+export default wls

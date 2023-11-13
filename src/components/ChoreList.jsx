@@ -1,5 +1,5 @@
-import React from 'react';
-import Chore from './Chore.js';
+/* eslint-disable react/prop-types */
+import Chore from './Chore.jsx';
 
 // TODO: sort by last done date
 const ChoreList = ({ chores, remove, didIt, moveUp }) => (

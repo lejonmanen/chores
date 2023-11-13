@@ -1,7 +1,6 @@
-import React from 'react';
 
 const withLocalStorage = WrappedComponent => {
-	return props => (
+	const wc = props => (
 		<WrappedComponent
 			loadFromStorage={key => localStorage.getItem(key)}
 			saveToStorage={(key, value) => localStorage.setItem(key, value)}
@@ -9,5 +8,7 @@ const withLocalStorage = WrappedComponent => {
 			{...props}
 		/>
 	)
+	wc.displayName = 'WithLocalStorage'
+	return wc
 }
 export default withLocalStorage;

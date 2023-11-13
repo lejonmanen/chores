@@ -1,8 +1,6 @@
 import React from 'react';
-import withLocalStorage from '../utils/withLocalStorage.js';
+import withLocalStorage from '../utils/withLocalStorage';
 
-// TODO: improve "now" and "add task" buttons
-// TODO: set expected due date (optional)
 
 class AddChore extends React.Component {
 	state = {
@@ -24,7 +22,8 @@ class AddChore extends React.Component {
 		};
 		const t = this.state.title, ld = this.state.lastDone;
 		const dd = this.state.dueDays, nd = this.state.nextDue;
-		const add = e => this.props.addChore(t, ld, dd, nd);
+		// eslint-disable-next-line react/prop-types
+		const add = () => this.props.addChore(t, ld, dd, nd);
 		return (
 			<div className="add-chore">
 				Add a new task
@@ -55,9 +54,9 @@ class AddChore extends React.Component {
 				<button onClick={add}>Add task</button>
 				</div>
 			</div>
-		) // TODO: fixa så enter funkar i "last done"
+		)
 	}
-	setNow = e => {
+	setNow = () => {
 		this.setState({ lastDone: this.getNowString() });
 	}
 	getNowString = () => {
@@ -72,4 +71,5 @@ class AddChore extends React.Component {
 	}
 }
 
-export default withLocalStorage(AddChore);
+const wls = withLocalStorage(AddChore);
+export default wls
